@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Freeze Object</title>
+</head>
+<body>
+	<script>
+		"use strict"
+
+		var Person = {
+			name: "Soni Kishan",
+			age: "25",
+			profession: "Developer"
+		}
+
+		function displayInfo(obj, propName) {
+			console.log(Object.getOwnPropertyDescriptor(obj,propName));
+		}
+
+		console.log("Before Freeze");
+		displayInfo(Person, "name");
+		// Before Freeze Object {value: "Soni Kishan", writable: true, enumerable: true, configurable: true}
+
+		Object.freeze(Person);
+
+		console.log("After Freeze");
+		displayInfo(Person, "name");
+		// After Freeze Object {value: "Soni Kishan", writable: false, enumerable: true, configurable: false}
+
+		
+		if(!Object.isFrozen(Person)) { // Check Object is frozen
+			Person.height = "6";	
+		}
+	</script>
+</body>
+</html>

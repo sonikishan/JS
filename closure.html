@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Closure Example</title>
+</head>
+<body>
+	<script>
+		"use strict"
+
+		var x,y, funcs = [];
+		for(x=0; x<5; x++) {
+			(function() {  // Immediately Invoked Function Expression (IIFE)
+				var r = x;
+				funcs.push(function() {
+					console.log(r);
+				});
+			}());
+			// Only Function intrudeces new scope, Javascript is not a block scope
+			
+		}
+
+		for(y=0; y<5; y++) {
+			funcs[y]();
+		}
+
+		// Another Example
+		function Person(name) {
+			// this.name = name;
+			var myName = name;
+			this.getName = function() {
+				return myName;
+			};
+		}
+
+		var me = new Person("Kishan");
+		console.log(me);
+		console.log(me.getName());
+	</script>
+</body>
+</html>

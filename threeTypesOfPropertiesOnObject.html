@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Three types of properties on object</title>
+</head>
+<body>
+	<script>
+		"use strict"
+
+		function Widget() {
+			// property for an instance, but inheritance of it is not needed 
+			this.aInstanceFunc = function() {
+				console.log("an instance func was called");
+			};
+
+			if(Widget.myConfigValue) {
+				// Set more config variable here
+				console.log("Here you can set more config variables");
+			}
+		}
+
+		// a prototype property will be inherited
+		Widget.prototype.aPrototypeFunc = function() {
+			console.log("a prototype func was called");
+		};
+
+		// typically used to configure the object for instantiation
+		Widget.aStaticFunc = function() {
+			console.log("a strict func was called");
+		};
+
+		Widget.myConfigValue = true;
+
+		var myWidget = new Widget();
+
+		myWidget.aInstanceFunc();
+		myWidget.aPrototypeFunc();
+		// myWidget.aStaticFunc();
+		Widget.aStaticFunc();
+
+	</script>
+</body>
+</html>
